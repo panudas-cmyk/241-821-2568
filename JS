@@ -1,0 +1,89 @@
+/*
+function
+*/
+
+let score1 = 10
+let score2 = 20
+
+function calulation_grade(score){
+    if (score >= 80 ){
+        return 'A'
+    }else if (score >= 70 ){
+        return 'B'
+    }else if (score >= 60 ){
+        return 'C'
+    }else if (score >= 50 ){
+        return 'D'
+    }else {
+        return 'F'
+    }
+}
+//เรียกใช้งานฟังก์ชัน    calcuation_grade เพื่อหาค่าเกรดจากคะแนนที่กำหนด
+let grade1 = calulation_grade(score1)
+let grade2 = calulation_grade(score2)
+console.log('score1 =' + score1 + ', grade:' + grade1)
+console.log('score2 =' + score2 + ', grade2 =' + grade2)
+
+
+/*
+array
+*/
+
+let score = [90 , 80, 70, 60, 50];
+
+for (let i = 0; i < score.length; i++) {
+    console.log('score[' + i + '] = ' + score[i]);
+}
+score.forEach(function(s) {
+    console.log('score:', s);
+    // console.log(`score: ${s}`);
+})
+
+/*
+array
+*/
+
+let scores = [90 , 80, 70, 60, 50];
+let newScores = [];
+
+for (let i = 0; i < scores.length; i++) {
+    console.log(scores[i]);
+    // if (scores[i] >= 60) {
+    //    newScores.push(scores[i]);
+    //}
+}
+
+let newScores = scores.filter(function(score) {
+    return score >= 60;
+})
+
+newScores.forEach((ns) => {
+    console.log('new scores:', ns);
+})
+
+/*
+object function
+*/
+
+let student = [
+    {name: "John", age: 20, grade: "A"},
+    {name: "Jane", age: 22, grade: "B"},
+    {name: "Jim", age: 21, grade: "C"},
+]
+console.log('student 1:', student[0]);
+
+let student = student.find((s) => {
+      return s.name === "Jim";
+})
+
+let dubblescoreStudent = student.map((s) => {
+        s.age = s.age * 2;
+        return s;
+});
+let highgradeStudent = student.filter((s) => {
+        return s.grade === "A";
+});
+
+console.log('Student ',student);
+console.log('dubblescoreStudent ',dubblescoreStudent);
+console.log('High grade Student ',highgradeStudent);
