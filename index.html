@@ -3,46 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-<style>
-    /*1. แต่งใคร ? (id, class, DOM) 2. แต่งอะไร ? */
-    @font-face {
-        font-family: ;
-        src: url(./Kanit/-Regular.ttf);
-    }
-
-    body {
-        background-color: grey;
-        font-family: 'Kanit';
-    }
-
-    #register-from {
-        color: white;
-        padding-left: 20px;
-        margin-left: 20px;
-        padding-right: 20px;
-        margin-right: 20px;
-        border: 1px solid black;
-        text-align: center;
-    }
-</style>
-    <!-- ส่วนนี้จะไม่แสดงผลบนเว็บหน้าจอ Browser -->
+    <title>JSDOM Example</title>       
 </head>
 <body>
-    <!-- ส่วนนี้จะแสดงผลบนเว็บหน้าจอ Browser -->
-    <div id="register-form">Registre-form</div>
-     ชื่อ : <input class="form-control" type="text" name="name">
-     นามสกุล : <input class="form-control" type="text" name="surname"><br>
-     อายุ : <input type="number" name="age" min="0" max="150"><br>
-     เพศ :
-     <input type="radio" name="gender" value="male"> ชาย
-     <input type="radio" name="gender" value="male"> หญิง<br>
-     งานอดิเรก :
-     <input type="checkbox" name="hobby" value="reading"> อ่านหนังสือ
-     <input type="checkbox" name="hobby" value="traveling"> ท่องเที่ยว
-     <input type="checkbox" name="hobby" value="sports"> กีฬา><br>
-     คำอธิบาย : <br>
-     <textarea name="description" rows="4" cols="50"></textarea><br>
-     <input type="submit" value="submit">
+    เพศ:
+    <input type="radio" name="gender" value="male" onchange="onchangeGender()" checked="true"> ชาย
+    <input type="radio" name="gender" value="female" onchange="onchangeGender()"> หญิง
+    <script>
+        function onchangeGender() {
+        console.log('onchangeGender');
+        }
+        // เลือก gender ทุกต input ออกมา
+        let genders = document.querySelectorAll('input[name="gender"]');
+        
+        // เช็ค ตัวไหน มี check อยู่ ให้เอา value มาแสดง
+        for (let i = 0; i < genders.length; i++) {
+            if (genders[i].checked) {
+                console.log("เพศที่เลือก: " + gendersInput[i].value);
+            }
+        }
+    </script>    
+    <button onclick="userClicked()">Submit</button>
+    <div onclick="devClicked()"> dev Clicked</div>
+    <script>
+        function userClicked() {
+            console.log("User Clicked the button!");
+        }
+        function devClicked() {
+            console.log("Dev Clicked the div!");
+        }
+    </script>
+    ชื่อ: <input 
+    id="fname"
+    class="input"
+    type="text" 
+    name="fname"
+    value="John">
+    นามสกุล: <input
+    id="lname"
+    class="input"
+    type="text"
+    name="lname"
+    value="Doe">
+    งานอดิเรก:
+    <input type="checkbox"name="hobby1" value="football" checked>Football
+    <input type="checkbox"name="hobby2" value="basketball"> Basketball
+    <input type="checkbox"name="hobby3" value="tennis">Tennis
+<script>
+    let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for (let i = 0; i < checkboxes.length; i++) {
+        console.log(checkboxes[i].value);
+    }
+    // Select DOM
+    const fname = document.getElementById('fname');
+    console.log(fname.value);
+    const fnameInput = document.getElementsByClassName('input');
+    console.log(fnameInput);
+    for (let i = 0; i < fnameInput.length; i++) {
+        console.log(fnameInput[i].value);
+    }
+</script>
 </body>
 </html>
